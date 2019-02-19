@@ -4,8 +4,8 @@ import Turtle from './utils/turtle/turtle';
 
 const inputField: HTMLElement = document.getElementById('inputField');
 const output: HTMLElement = document.getElementById('output');
-const canvas = <HTMLCanvasElement>document.getElementById("myCanvas");
-const turtle = new Turtle(canvas.getContext("2d"), 200, 200);
+const canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myCanvas");
+const turtle: Turtle = new Turtle(canvas.getContext("2d"), 200, 200);
 
 // task 1
 let input: string = (<HTMLInputElement>inputField).value;
