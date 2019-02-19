@@ -21,6 +21,7 @@
   "homepage": "https://github.com/danistomi/Compilers-and-interpreters#readme",
   "devDependencies": {
     "eslint": "^5.14.1",
+    "eslint-config-airbnb": "^17.1.0",
     "ts-loader": "^5.3.3",
     "typescript": "^3.3.3",
     "webpack": "^4.29.5",
