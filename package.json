@@ -1,0 +1,29 @@
+{
+  "name": "compilers-and-interpreters",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "webpack --watch",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danistomi/Compilers-and-interpreters.git"
+  },
+  "author": "Tamas Danis",
+  "license": "ISC",
+  "homepage": "https://github.com/danistomi/Compilers-and-interpreters#readme",
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.3",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3"
+  }
+}
