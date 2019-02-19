@@ -13,7 +13,7 @@ npm run-script dev
 ```
 
 ## Production
-edit `webpack.json`
+edit `webpack.config.json`
 ``` 
 mode:'development
 ```
