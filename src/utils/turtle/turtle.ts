@@ -13,9 +13,9 @@ class Turtle {
         this.canvas.moveTo(x, y);
     }
 
-    forward(lenght: number): void {
-        let nextX = this.x + Math.sin(Turtle.degreeToRadian(this.angle)) * lenght;
-        let nextY = this.y + Math.cos(Turtle.degreeToRadian(this.angle)) * lenght;
+    forward(length: number): void {
+        let nextX = this.x + Math.sin(Turtle.degreeToRadian(this.angle)) * length;
+        let nextY = this.y + Math.cos(Turtle.degreeToRadian(this.angle)) * length;
         this.canvas.lineTo(nextX, nextY);
         this.canvas.stroke();
         this.x = nextX;
