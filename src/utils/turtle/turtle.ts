@@ -14,12 +14,11 @@ class Turtle {
     }
 
     forward(length: number): void {
-        let nextX = this.x + Math.sin(Turtle.degreeToRadian(this.angle)) * length;
-        let nextY = this.y + Math.cos(Turtle.degreeToRadian(this.angle)) * length;
-        this.canvas.lineTo(nextX, nextY);
+        this.x = this.x + Math.sin(Turtle.degreeToRadian(this.angle)) * length;
+        this.y = this.y + Math.cos(Turtle.degreeToRadian(this.angle)) * length;
+
+        this.canvas.lineTo(this.x, this.y);
         this.canvas.stroke();
-        this.x = nextX;
-        this.y = nextY;
     }
 
     backward(length: number): void {
@@ -35,7 +34,7 @@ class Turtle {
     }
 
     static degreeToRadian(angle: number): number {
-        return (Math.PI * 2) / 360 * angle
+        return Math.PI / 180 * angle
     }
 }
 
