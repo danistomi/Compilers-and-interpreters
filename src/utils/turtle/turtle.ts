@@ -22,8 +22,8 @@ class Turtle {
         this.y = nextY;
     }
 
-    backward(lenght: number): void {
-        this.forward(-lenght);
+    backward(length: number): void {
+        this.forward(-length);
     }
 
     left(angle: number): void {
