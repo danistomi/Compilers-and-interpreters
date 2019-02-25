@@ -9,7 +9,7 @@ npm install
 
 ## run in development mode
 ```
-npm run-script dev
+npm run dev
 ```
 
 ## Production
@@ -23,5 +23,5 @@ mode :'production'
 ```
 and run 
 ```
-npm run-script build
+npm run build
 ```
