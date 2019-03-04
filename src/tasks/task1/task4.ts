@@ -1,4 +1,4 @@
-import Turtle from '../../utils/turtle/turtle'
+import Turtle from '../../utils/Turtle'
 
 export default class Task4 {
     turtle: Turtle;
