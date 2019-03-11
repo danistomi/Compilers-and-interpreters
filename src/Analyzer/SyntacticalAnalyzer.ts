@@ -1,6 +1,6 @@
 import LexicalAnalyzer from "./LexicalAnalyzer";
 
-class SyntacticalAnalyzer {
+export default class SyntacticalAnalyzer {
     lexicalAnalyzer: LexicalAnalyzer;
 
     constructor(lexicalAnalyzer: LexicalAnalyzer) {

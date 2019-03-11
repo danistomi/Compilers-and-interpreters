@@ -1,6 +1,6 @@
 export default class Turtle {
-    private canvasWidth: number;
-    private canvasHeight: number;
+    private readonly canvasWidth: number;
+    private readonly canvasHeight: number;
     private x: number;
     private y: number;
     private ctx: CanvasRenderingContext2D;
@@ -34,25 +34,25 @@ export default class Turtle {
         this.angle -= angle;
     }
 
-    clear() {
+    clear(): void {
         this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
         this.ctx.beginPath();
         this.init();
     }
 
-    color(r: number, g: number, b: number) {
+    color(r: number, g: number, b: number): void {
         this.ctx.strokeStyle = `rgb(${r}, ${g}, ${b})`;
         this.ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
     }
 
-    point(r: number) {
+    point(r: number): void {
         this.ctx.beginPath();
         this.ctx.ellipse(this.x, this.y, r, r, Math.PI / 4, 0, 2 * Math.PI);
         this.ctx.fill();
         this.ctx.moveTo(this.x, this.y)
     }
 
-    private init() {
+    private init(): void {
         this.x = this.canvasWidth / 2;
         this.y = this.canvasHeight / 2;
         this.ctx.moveTo(this.x, this.y);

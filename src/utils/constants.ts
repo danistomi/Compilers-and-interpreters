@@ -11,9 +11,8 @@ export const CLEAR: string[] = ['zmaz'];
 export const COLOR: string[] = ['farba'];
 export const POINT: string[] = ['bod'];
 
-
 export const REPEAT_STAR: string = '*';
-
+export const REPEAT_ABC: string = 'ijklmnopqrstv';
 
 export const INSTRUCTION_FD: number = 1;
 export const INSTRUCTION_LT: number = 2;

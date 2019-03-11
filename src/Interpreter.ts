@@ -1,6 +1,6 @@
-import LexicalAnalyzer from './LexicalAnalyzer'
-import Turtle from '../Turtle';
-import * as constants from "../constants";
+import LexicalAnalyzer from './Analyzer/LexicalAnalyzer'
+import Turtle from './utils/Turtle';
+import {CLEAR, COLOR, FORWARD, LEFT, NOTHING, NUMBER, POINT, REPEAT, REPEAT_STAR, RIGHT} from "./utils/constants";
 
 export default class Interpreter {
     analyzer: LexicalAnalyzer;
@@ -12,44 +12,44 @@ export default class Interpreter {
     }
 
     interpret(): void {
-        while (this.analyzer.kind != constants.NOTHING) {
-            if (constants.FORWARD.indexOf(this.analyzer.token) != -1) {
+        while (this.analyzer.kind != NOTHING) {
+            if (FORWARD.indexOf(this.analyzer.token) != -1) {
                 this.analyzer.scan();
                 this.turtle.forward(parseInt(this.analyzer.token));
                 this.analyzer.scan();
 
-            } else if (constants.LEFT.indexOf(this.analyzer.token) != -1) {
+            } else if (LEFT.indexOf(this.analyzer.token) != -1) {
                 this.analyzer.scan();
                 this.turtle.left(parseInt(this.analyzer.token));
                 this.analyzer.scan();
 
-            } else if (constants.RIGHT.indexOf(this.analyzer.token) != -1) {
+            } else if (RIGHT.indexOf(this.analyzer.token) != -1) {
                 this.analyzer.scan();
                 this.turtle.right(parseInt(this.analyzer.token));
                 this.analyzer.scan();
 
-            } else if (constants.REPEAT.indexOf(this.analyzer.token) != -1) {
+            } else if (REPEAT.indexOf(this.analyzer.token) != -1) {
                 this.analyzer.scan();
                 let count: number = parseInt(this.analyzer.token);
                 this.analyzer.scan();
                 let token = this.analyzer.token;
                 this.doCycle(token, count);
 
-            } else if (constants.NUMBER == this.analyzer.kind) {
+            } else if (NUMBER == this.analyzer.kind) {
                 let count: number = parseInt(this.analyzer.token);
                 this.analyzer.scan();
                 let method: string = this.analyzer.token;
                 this.analyzer.scan();
-                if (method == constants.REPEAT_STAR) {
+                if (method == REPEAT_STAR) {
                     let token = this.analyzer.token;
                     this.doCycle(token, count);
                 }
 
-            } else if (constants.CLEAR.indexOf(this.analyzer.token) != -1) {
+            } else if (CLEAR.indexOf(this.analyzer.token) != -1) {
                 this.turtle.clear();
                 this.analyzer.scan();
 
-            } else if (constants.COLOR.indexOf(this.analyzer.token) != -1) {
+            } else if (COLOR.indexOf(this.analyzer.token) != -1) {
                 let rgb = [0, 0, 0];
                 for (let i = 0; i < 3; i++) {
                     this.analyzer.scan();
@@ -58,7 +58,7 @@ export default class Interpreter {
                 this.turtle.color(rgb[0], rgb[1], rgb[2]);
                 this.analyzer.scan();
 
-            } else if (constants.POINT.indexOf(this.analyzer.token) != -1) {
+            } else if (POINT.indexOf(this.analyzer.token) != -1) {
                 this.analyzer.scan();
                 let r: number = parseInt(this.analyzer.token);
                 this.turtle.point(r);

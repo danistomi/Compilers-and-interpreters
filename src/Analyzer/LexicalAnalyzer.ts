@@ -1,4 +1,4 @@
-import * as constants from '../constants'
+import * as constants from '../utils/constants'
 
 export default class LexicalAnalyzer {
     input: string;
@@ -11,11 +11,17 @@ export default class LexicalAnalyzer {
     position: number;
 
     constructor(input: string) {
-        this.input = input;
+        this.setInput(input);
     }
 
     setInput(input: string) {
         this.input = input;
+    }
+
+    init() {
+        this.index = 0;
+        this.next();
+        this.scan();
     }
 
     next(): void {
