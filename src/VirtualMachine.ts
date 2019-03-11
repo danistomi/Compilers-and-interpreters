@@ -1,6 +1,5 @@
 import {INSTRUCTION_FD, INSTRUCTION_LOOP, INSTRUCTION_LT, INSTRUCTION_RT, INSTRUCTION_SET} from "./utils/constants";
 import Turtle from "./utils/Turtle";
-import Syntax from "./SyntacticalTree/Syntax";
 
 export default class VirtualMachine {
     mem: number[];
