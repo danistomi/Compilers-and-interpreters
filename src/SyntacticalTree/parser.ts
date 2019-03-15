@@ -10,19 +10,19 @@ import Repeat from "./Repeat";
 const parse = (analyzer: LexicalAnalyzer): Block => {
     let result = new Block();
     while (analyzer.kind == WORD) {
-        if (FORWARD.indexOf(analyzer.token) != -1) {
+        if (FORWARD.includes(analyzer.token)) {
             analyzer.scan();
             result.add(new Fd(new Const(parseInt(analyzer.token))));
             analyzer.scan();
-        } else if (LEFT.indexOf(analyzer.token) != -1) {
+        } else if (LEFT.includes(analyzer.token)) {
             analyzer.scan();
             result.add(new Lt(new Const(parseInt(analyzer.token))));
             analyzer.scan();
-        } else if (RIGHT.indexOf(analyzer.token) != -1) {
+        } else if (RIGHT.includes(analyzer.token)) {
             analyzer.scan();
             result.add(new Rt(new Const(parseInt(analyzer.token))));
             analyzer.scan();
-        } else if (REPEAT.indexOf(analyzer.token) != -1) {
+        } else if (REPEAT.includes(analyzer.token)) {
             analyzer.scan();
             let n = parseInt(analyzer.token);
             analyzer.scan();

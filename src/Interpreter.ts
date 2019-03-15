@@ -13,22 +13,22 @@ export default class Interpreter {
 
     interpret(): void {
         while (this.analyzer.kind != NOTHING) {
-            if (FORWARD.indexOf(this.analyzer.token) != -1) {
+            if (FORWARD.includes(this.analyzer.token)) {
                 this.analyzer.scan();
                 this.turtle.forward(parseInt(this.analyzer.token));
                 this.analyzer.scan();
 
-            } else if (LEFT.indexOf(this.analyzer.token) != -1) {
+            } else if (LEFT.includes(this.analyzer.token)) {
                 this.analyzer.scan();
                 this.turtle.left(parseInt(this.analyzer.token));
                 this.analyzer.scan();
 
-            } else if (RIGHT.indexOf(this.analyzer.token) != -1) {
+            } else if (RIGHT.includes(this.analyzer.token)) {
                 this.analyzer.scan();
                 this.turtle.right(parseInt(this.analyzer.token));
                 this.analyzer.scan();
 
-            } else if (REPEAT.indexOf(this.analyzer.token) != -1) {
+            } else if (REPEAT.includes(this.analyzer.token)) {
                 this.analyzer.scan();
                 let count: number = parseInt(this.analyzer.token);
                 this.analyzer.scan();
@@ -45,11 +45,11 @@ export default class Interpreter {
                     this.doCycle(token, count);
                 }
 
-            } else if (CLEAR.indexOf(this.analyzer.token) != -1) {
+            } else if (CLEAR.includes(this.analyzer.token)) {
                 this.turtle.clear();
                 this.analyzer.scan();
 
-            } else if (COLOR.indexOf(this.analyzer.token) != -1) {
+            } else if (COLOR.includes(this.analyzer.token)) {
                 let rgb = [0, 0, 0];
                 for (let i = 0; i < 3; i++) {
                     this.analyzer.scan();
@@ -58,7 +58,7 @@ export default class Interpreter {
                 this.turtle.color(rgb[0], rgb[1], rgb[2]);
                 this.analyzer.scan();
 
-            } else if (POINT.indexOf(this.analyzer.token) != -1) {
+            } else if (POINT.includes(this.analyzer.token)) {
                 this.analyzer.scan();
                 let r: number = parseInt(this.analyzer.token);
                 this.turtle.point(r);
