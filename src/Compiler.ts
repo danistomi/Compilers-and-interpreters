@@ -20,22 +20,22 @@ export default class Compiler {
 
     compile(counter_adr: number): void {
         while (this.analyzer.kind == WORD) {
-            if (FORWARD.indexOf(this.analyzer.token) != -1) {
+            if (FORWARD.includes(this.analyzer.token)) {
                 this.analyzer.scan();
                 this.poke(INSTRUCTION_FD);
                 this.poke(parseInt(this.analyzer.token));
                 this.analyzer.scan();
-            } else if (LEFT.indexOf(this.analyzer.token) != -1) {
+            } else if (LEFT.includes(this.analyzer.token)) {
                 this.analyzer.scan();
                 this.poke(INSTRUCTION_LT);
                 this.poke(parseInt(this.analyzer.token));
                 this.analyzer.scan();
-            } else if (RIGHT.indexOf(this.analyzer.token) != -1) {
+            } else if (RIGHT.includes(this.analyzer.token)) {
                 this.analyzer.scan();
                 this.poke(INSTRUCTION_RT);
                 this.poke(parseInt(this.analyzer.token));
                 this.analyzer.scan();
-            } else if (REPEAT.indexOf(this.analyzer.token) != -1) {
+            } else if (REPEAT.includes(this.analyzer.token)) {
                 this.analyzer.scan();
                 this.poke(INSTRUCTION_SET);
                 this.poke(counter_adr);
