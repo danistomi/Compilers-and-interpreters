@@ -3,8 +3,9 @@ import Turtle from "../../utils/Turtle";
 import {INSTRUCTION_FD, INSTRUCTION_LOOP, INSTRUCTION_RT, INSTRUCTION_SET} from "../../utils/constants";
 
 export default (vm: VirtualMachine, turtle: Turtle): void => {
+    turtle.clear();
 
-    vm.mem = new Array(11);
+    vm.init();
     vm.mem[0] = INSTRUCTION_SET;
     vm.mem[1] = 4;
     vm.mem[2] = 100;

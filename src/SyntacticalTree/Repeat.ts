@@ -51,7 +51,6 @@ export default class Repeat extends Syntax {
         vm.poke(INSTRUCTION_LOOP);
         vm.poke(Syntax.counter_adr);
         vm.poke(loop_body);
-
     }
 
     translate(depth: number): string {
