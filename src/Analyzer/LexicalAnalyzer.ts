@@ -1,4 +1,4 @@
-import * as constants from '../utils/constants'
+import { NOTHING, NUMBER, SYMBOL, WORD } from "../utils/constants";
 
 export default class LexicalAnalyzer {
     input: string;
@@ -46,19 +46,33 @@ export default class LexicalAnalyzer {
                 this.token += this.look;
                 this.next();
             } while (this.lookIsNumber());
-            this.kind = constants.NUMBER;
+            if (this.look == '.') {
+                do {
+                    this.token += this.look;
+                    this.next();
+                } while (this.lookIsNumber())
+            }
+            this.kind = NUMBER;
         } else if (this.lookIsCharacter()) {
             do {
                 this.token += this.look;
                 this.next();
             } while ((this.lookIsCharacter()));
-            this.kind = constants.WORD;
+            this.kind = WORD;
+        } else if (this.lookIsLessOrGraterChar()) {
+            this.token = this.look;
+            this.next();
+            if (this.look == '=') {
+                this.token += '=';
+                this.next()
+            }
+            this.kind = SYMBOL;
         } else if (this.look != '\0') {
             this.token = this.look;
             this.next();
-            this.kind = constants.SYMBOL;
+            this.kind = SYMBOL;
         } else {
-            this.kind = constants.NOTHING;
+            this.kind = NOTHING;
         }
     }
 
@@ -70,5 +84,9 @@ export default class LexicalAnalyzer {
     private lookIsCharacter() {
         let ascii = this.look.charCodeAt(0);
         return (ascii > 64 && ascii < 91) || (ascii > 96 && ascii < 123);
+    }
+
+    private lookIsLessOrGraterChar() {
+        return this.look == '<' || this.look == '>';
     }
 }

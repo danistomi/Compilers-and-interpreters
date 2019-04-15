@@ -1,5 +1,5 @@
 import Syntax from "./Syntax";
-import Const from "./Const";
+import Const from "./Arithmetical/Const";
 import VirtualMachine from "../VirtualMachine";
 import Turtle from "../utils/Turtle";
 

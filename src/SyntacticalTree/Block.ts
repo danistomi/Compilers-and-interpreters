@@ -14,7 +14,7 @@ export default class Block extends Syntax {
         this.items.push(item);
     }
 
-    execute(turtle:Turtle): void {
+    execute(turtle: Turtle): void {
         this.items.forEach(item => item.execute(turtle));
     }
 
@@ -26,10 +26,14 @@ export default class Block extends Syntax {
         this.items.forEach(item => item.optimized(vm));
     }
 
-    translate(depth: number): string {
+    translate(depth: number = 0): string {
         let tabs = Syntax.tabs(depth);
         let res = '';
         this.items.forEach(item => res += `${tabs}${item.translate(depth)}<br>`);
         return res;
+    }
+
+    eval(): number {
+        return 0;
     }
 }

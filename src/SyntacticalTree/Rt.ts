@@ -1,10 +1,10 @@
 import TurtleCommand from "./TurtleCommand";
-import {INSTRUCTION_RT} from "../utils/constants";
+import { INSTRUCTION_RT } from "../utils/constants";
 import VirtualMachine from "../VirtualMachine";
 import Turtle from "../utils/Turtle";
 
 export default class Rt extends TurtleCommand {
-    execute(turtle:Turtle): void {
+    execute(turtle: Turtle): void {
         turtle.right(this.param.value);
     }
 
@@ -19,6 +19,10 @@ export default class Rt extends TurtleCommand {
 
     optimized(vm: VirtualMachine): void {
         this.generate(vm);
+    }
+
+    eval(): number {
+        return this.param.eval();
     }
 
 }

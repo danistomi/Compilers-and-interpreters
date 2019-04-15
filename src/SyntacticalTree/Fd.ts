@@ -1,10 +1,11 @@
 import TurtleCommand from "./TurtleCommand";
-import {INSTRUCTION_FD} from "../utils/constants";
+import { INSTRUCTION_FD } from "../utils/constants";
 import VirtualMachine from "../VirtualMachine";
 import Turtle from "../utils/Turtle";
 
 export default class Fd extends TurtleCommand {
-    execute(turtle:Turtle): void {
+    execute(turtle: Turtle): void {
+        console.log(this.param.value);
         turtle.forward(this.param.value);
     }
 
@@ -21,4 +22,7 @@ export default class Fd extends TurtleCommand {
         this.generate(vm);
     }
 
+    eval(): number {
+        return 0;
+    }
 }

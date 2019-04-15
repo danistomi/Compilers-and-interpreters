@@ -1,8 +1,8 @@
-import Const from "./Const";
+import Const from "./Arithmetical/Const";
 import Block from "./Block";
 import Syntax from "./Syntax";
 import VirtualMachine from "../VirtualMachine";
-import {INSTRUCTION_LOOP, INSTRUCTION_SET, REPEAT_ABC} from "../utils/constants";
+import { INSTRUCTION_LOOP, INSTRUCTION_SET, REPEAT_ABC } from "../utils/constants";
 import Turtle from "../utils/Turtle";
 
 export default class Repeat extends Syntax {
@@ -15,7 +15,7 @@ export default class Repeat extends Syntax {
         this.body = body;
     }
 
-    execute(turtle:Turtle): void {
+    execute(turtle: Turtle): void {
         for (let i = 0; i < this.count.value; i++) {
             this.body.execute(turtle);
         }
@@ -58,5 +58,9 @@ export default class Repeat extends Syntax {
         let iter = REPEAT_ABC[depth];
         return `for (int ${iter} = 0; ${iter} < ${this.count.value}; ${iter}++) {<br>
         ${this.body.translate(depth + 1)}${tabs}}`
+    }
+
+    eval(): number {
+        return 0;
     }
 }

@@ -2,12 +2,13 @@ import Turtle from "./utils/Turtle";
 import LexicalAnalyzer from "./Analyzer/LexicalAnalyzer";
 import Interpreter from "./Interpreter";
 import VirtualMachine from "./VirtualMachine";
-import parse from "./SyntacticalTree/parser";
 import Compiler from "./Compiler";
-import Syntax from "./SyntacticalTree/Syntax";
+import { parse } from "./SyntacticalTree/parser";
+import { INSTRUCTION_JUMP } from "./utils/constants";
+import program from "./Program";
 
 const inputField: HTMLElement = document.getElementById('inputField');
-const output: HTMLElement = document.getElementById('output');
+export const output: HTMLElement = document.getElementById('output');
 const canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myCanvas");
 const turtle = new Turtle(canvas.getContext("2d"), canvas.width, canvas.height);
 
@@ -22,6 +23,7 @@ const compiler = new Compiler(vm);
     input = (<HTMLInputElement>inputField).value;
     analyzer.setInput(input);
     turtle.clear();
+    program.reset();
     main();
 };
 
@@ -29,14 +31,30 @@ const compiler = new Compiler(vm);
 const main = (): void => {
     analyzer.init();
     vm.init();
-    let program = parse(analyzer);
-    Syntax.counter_adr = 99;
+    vm.poke(INSTRUCTION_JUMP);
+    vm.poke(program.globalvarpos);
+    vm.adr = program.globalvarpos;
 
-    program.optimized(vm);
-    program.execute(turtle);
+    let programTree = parse(analyzer);
+    programTree.generate(vm);
+
+    vm.reset();
     vm.run(turtle);
 
-    output.innerHTML = program.translate(0);
+
+    // Syntax.counter_adr = 0;
+    // vm.poke(INSTRUCTION_JUMP);
+    // vm.poke(2 + Object.keys(variables).length);
+    // Syntax.counter_adr += Object.keys(variables).length;
+    //
+    // program.generate(vm);
+    // vm.run(turtle);
+    //
+    // printLn(program.translate());
+    // print('a');
+    // printLn(evaluate(analyzer));
+    // console.log(vm.mem)
+    // output.innerHTML = '' + evaluate(analyzer);
 };
 
 main();

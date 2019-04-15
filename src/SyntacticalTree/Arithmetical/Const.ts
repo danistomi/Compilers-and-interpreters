@@ -1,9 +1,10 @@
-import Syntax from "./Syntax";
-import VirtualMachine from "../VirtualMachine";
-import Turtle from "../utils/Turtle";
+import Syntax from "../Syntax";
+import VirtualMachine from "../../VirtualMachine";
+import Turtle from "../../utils/Turtle";
+import { INSTRUCTION_PUSH } from "../../utils/constants";
 
 export default class Const extends Syntax {
-    value: number;
+    readonly value: number;
 
     constructor(value: number) {
         super();
@@ -11,10 +12,11 @@ export default class Const extends Syntax {
     }
 
     generate(vm: VirtualMachine): void {
+        vm.poke(INSTRUCTION_PUSH);
         vm.poke(this.value)
     }
 
-    execute(turtle:Turtle): void {
+    execute(turtle: Turtle): void {
     }
 
     translate(depth: number): string {
@@ -23,6 +25,10 @@ export default class Const extends Syntax {
 
     optimized(vm: VirtualMachine): void {
         this.generate(vm);
+    }
+
+    eval(): number {
+        return this.value;
     }
 
 }
