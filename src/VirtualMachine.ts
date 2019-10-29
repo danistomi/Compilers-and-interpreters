@@ -180,7 +180,6 @@ export default class VirtualMachine {
 
     private doArithmetic(operand: String) {
         this.pc++;
-        console.log(this.mem, this.top - 1);
         let a: number = this.mem[this.top - 1];
         let b: number = this.mem[this.top];
         let res: number;
@@ -205,6 +204,7 @@ export default class VirtualMachine {
                 res = a > b ? 1 : 0;
                 break;
         }
+        console.log(`DO_ARITHMETIC ${a} ${operand} ${b} = ${res}`);
         this.mem[this.top - 1] = res;
         this.top++;
     }

@@ -23,8 +23,4 @@ export default class Add extends BinaryOperation {
     translate(depth: number): string {
         return "";
     }
-
-    evaulate(): number {
-        return 0;
-    }
 }

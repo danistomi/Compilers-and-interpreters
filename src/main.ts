@@ -37,6 +37,7 @@ const main = (): void => {
 
     let programTree = parse(analyzer);
     programTree.generate(vm);
+    console.log(programTree);
 
     vm.reset();
     vm.run(turtle);
